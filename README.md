@@ -1,3 +1,8 @@
+
+
+
+
+
 <div align="center">
 
 # 🐼⚡ BambuElectro — Smart Electronics, PCB & Circuit Simulator Suite
@@ -18,7 +23,7 @@
 
 | Visual Resistor & SMD EIA-96 | Drag & Drop Breadboard Sim | Digital Oscilloscope & FFT | Kalkulator PCB & Baterai IoT | Visual Pinout ESP32 & BOM |
 | :---: | :---: | :---: | :---: | :---: |
-| *(Tarik SS 1)* | *(Tarik SS 2)* | *(Tarik SS 3)* | *(Tarik SS 4)* | *(Tarik SS 5)* |
+| <img width="1080" height="2400" alt="Visual Resistor   SMD EIA-96" src="https://github.com/user-attachments/assets/98f16480-8fa1-443e-b96b-03d6bbba2ba0" /> | <img width="1080" height="2400" alt="Drag   Drop Breadboard Sim" src="https://github.com/user-attachments/assets/3fc55335-5624-4265-9922-a5e4ae9b3d7d" /> | <img width="1080" height="2400" alt="Digital Oscilloscope   FFT" src="https://github.com/user-attachments/assets/359ddeea-7457-4a6a-8850-1316d4a9c9a2" /> | <img width="1080" height="2400" alt="Kalkulator PCB   Baterai IoT" src="https://github.com/user-attachments/assets/fc0a2b21-779d-4c39-8128-8455d7e79a57" /> | <img width="1080" height="2400" alt="Visual Pinout ESP32   BOM" src="https://github.com/user-attachments/assets/10dcd3e6-d401-4aa4-b606-e9d45dad2bd4" /> |
 
 ---
 
