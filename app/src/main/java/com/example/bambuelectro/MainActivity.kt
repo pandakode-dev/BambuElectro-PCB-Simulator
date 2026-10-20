@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,8 +14,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -61,11 +66,16 @@ fun BambuElectroMainApp() {
                             shape = RoundedCornerShape(14.dp),
                             color = SchematicIvory,
                             border = BorderStroke(2.dp, BrightGold),
-                            modifier = Modifier.size(44.dp)
+                            modifier = Modifier.size(46.dp)
                         ) {
-                            Box(contentAlignment = Alignment.Center) {
-                                Text("🐼", fontSize = 24.sp)
-                            }
+                            Image(
+                                painter = painterResource(id = R.drawable.logo_bambuelectro),
+                                contentDescription = "Logo BambuElectro",
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(14.dp))
+                            )
                         }
                         Spacer(modifier = Modifier.width(10.dp))
                         Column {
@@ -79,7 +89,7 @@ fun BambuElectroMainApp() {
                                 Spacer(modifier = Modifier.width(6.dp))
                                 Surface(color = BrightGold, shape = RoundedCornerShape(6.dp)) {
                                     Text(
-                                        text = "SIMULATOR PRO",
+                                        text = "ULTIMATE LAB",
                                         color = SiliconDark,
                                         fontSize = 9.sp,
                                         fontWeight = FontWeight.ExtraBold,
@@ -88,9 +98,11 @@ fun BambuElectroMainApp() {
                                 }
                             }
                             Text(
-                                text = "Breadboard Sim • Oscilloscope • PCB • Pinout",
+                                text = "Breadboard Sim • PCB • Pinout • PLC & PID Suite",
                                 color = SoftTraceBorder,
-                                fontSize = 11.sp
+                                fontSize = 11.sp,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
                             )
                         }
                     }
@@ -109,7 +121,7 @@ fun BambuElectroMainApp() {
                     selected = selectedTab == 0,
                     onClick = { selectedTab = 0 },
                     icon = { Icon(Icons.Default.ColorLens, contentDescription = null) },
-                    label = { Text("Resistor", fontWeight = FontWeight.Bold, fontSize = 10.sp) },
+                    label = { Text("Resistor", fontWeight = FontWeight.Bold, fontSize = 9.sp, maxLines = 1) },
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = PureWhite,
                         selectedTextColor = PcbDarkGreen,
@@ -120,7 +132,7 @@ fun BambuElectroMainApp() {
                     selected = selectedTab == 1,
                     onClick = { selectedTab = 1 },
                     icon = { Icon(Icons.Default.ElectricalServices, contentDescription = null) },
-                    label = { Text("Sirkuit & PCB", fontWeight = FontWeight.Bold, fontSize = 10.sp) },
+                    label = { Text("Sirkuit", fontWeight = FontWeight.Bold, fontSize = 9.sp, maxLines = 1) },
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = PureWhite,
                         selectedTextColor = CopperGold,
@@ -131,7 +143,7 @@ fun BambuElectroMainApp() {
                     selected = selectedTab == 2,
                     onClick = { selectedTab = 2 },
                     icon = { Icon(Icons.Default.DeveloperBoard, contentDescription = null) },
-                    label = { Text("Simulasi Lab", fontWeight = FontWeight.Bold, fontSize = 10.sp) },
+                    label = { Text("Simulasi", fontWeight = FontWeight.Bold, fontSize = 9.sp, maxLines = 1) },
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = PureWhite,
                         selectedTextColor = PcbDarkGreen,
@@ -142,11 +154,22 @@ fun BambuElectroMainApp() {
                     selected = selectedTab == 3,
                     onClick = { selectedTab = 3 },
                     icon = { Icon(Icons.Default.Memory, contentDescription = null) },
-                    label = { Text("Pinout & BOM", fontWeight = FontWeight.Bold, fontSize = 10.sp) },
+                    label = { Text("Pinout", fontWeight = FontWeight.Bold, fontSize = 9.sp, maxLines = 1) },
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = PureWhite,
                         selectedTextColor = CopperGold,
                         indicatorColor = CopperGold
+                    )
+                )
+                NavigationBarItem(
+                    selected = selectedTab == 4,
+                    onClick = { selectedTab = 4 },
+                    icon = { Icon(Icons.Default.Sensors, contentDescription = null) },
+                    label = { Text("PLC & PID", fontWeight = FontWeight.Bold, fontSize = 9.sp, maxLines = 1) },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = PureWhite,
+                        selectedTextColor = PcbDarkGreen,
+                        indicatorColor = PcbEmerald
                     )
                 )
             }
@@ -158,6 +181,7 @@ fun BambuElectroMainApp() {
                 1 -> CircuitCalculatorScreen()
                 2 -> VirtualSimLabScreen()
                 3 -> PinoutAndBomScreen()
+                4 -> SensorAndControlScreen()
             }
         }
     }

@@ -11,8 +11,9 @@
         android:theme="@android:style/Theme.Material.Light.NoActionBar"
         tools:targetApi="31">
 
+        <!-- 1. SPLASH ACTIVITY JALAN PERTAMA KALI SAAT IKON DIKLIK -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:theme="@android:style/Theme.Material.Light.NoActionBar">
             <intent-filter>
@@ -20,6 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 2. MAIN ACTIVITY SEBAGAI LAYAR UTAMA -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
