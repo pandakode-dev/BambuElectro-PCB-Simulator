@@ -27,36 +27,40 @@
 
 ---
 
-## ✨ 6 Fitur Utama (Killer Engineering Features)
+## ✨ Fitur Utama (Killer Engineering Features)
 
-### 1. 🛠️ Interactive Drag & Drop Breadboard Simulator (Wokwi / Tinkercad Style)
-* **Visualisasi Komponen Realistis:** Merender bentuk fisik resistor dengan **gelang warna dinamis yang otomatis berubah mengikuti nilai Ohm-nya**, simbol gerbang logika standar IEEE/ANSI (`AND`, `OR`, `NAND`, `XOR`), kubah lampu LED menyala, lilitan induktor, kapasitor, dioda Zener, potensiometer putar, hingga transistor NPN & MOSFET.
-* **Live Digital Multimeter & Bench PSU (1.5V – 24V):** Mengukur pembagi tegangan ($V_{out}$), arus cabang (mA), dan disipasi daya (mW) secara *real-time* saat komponen digeser atau diubah nilainya.
-* **Project Save/Load & PNG Schematic Exporter:** Simpan proyek rangkaian ke memori perangkat atau bagikan gambar skematik ke WhatsApp/Laporan Praktikum.
+### 1. 🛠️ Interactive Drag-and-Drop Breadboard Simulator (Wokwi & Tinkercad Style)
+* **Visualisasi 19 Komponen Realistis:** Merender bentuk fisik resistor dengan **gelang warna dinamis yang otomatis berubah mengikuti nilai Ohm-nya**, simbol gerbang logika standar IEEE/ANSI (`AND`, `OR`, `NAND`, `XOR`), kubah lampu LED menyala, lilitan induktor, kapasitor, dioda Zener, potensiometer putar, hingga transistor NPN & MOSFET.
+* **Alat Ukur Interaktif di Kanvas:** Tarik dan pasang **Multimeter Digital (DMM)** atau **Osiloskop Probe (CH1/CH2)** langsung di atas meja kerja, lalu ketuk instrumen tersebut untuk membuka layar ukur tegangan ($V$), arus ($mA$), hambatan ($\Omega$), dan bentuk gelombang sinyal secara *real-time*.
+* **Animasi Aliran Elektron & Proteksi Burnout:** Titik-titik cahaya emas mengalir dinamis menyusuri kabel jumper sesuai besar arus (`mA`), disertai efek visual asap dan percikan api (*burnout alert*) jika komponen mengalami kelebihan beban (*overcurrent*).
+* **Auto-Generate Sketch Arduino (.INO):** Otomatis menyusun draf kode C++/Arduino berdasarkan komponen dan kabel yang terpasang di kanvas simulasi.
+* **Project Save/Load & PNG Exporter:** Simpan rangkaian ke memori perangkat atau ekspor skematik menjadi gambar `.PNG` siap lampirkan ke laporan praktikum.
 
 ### 2. 📈 Digital Storage Oscilloscope, Function Generator & FFT Spectrum
-* Simulasi osiloskop dua domain (*Time-Domain Waveform* & *Harmonic Frequency FFT Spectrum dBV*) untuk gelombang **Sinus, Kotak (PWM), Segitiga, Gigi Gergaji, dan Output Filter RC**.
+* Simulasi osiloskop dual-channel (*Time-Domain Waveform* & *Harmonic Frequency FFT Spectrum dBV*) untuk gelombang **Sinus, Kotak (PWM), Segitiga, Gigi Gergaji, dan Output Filter RC**.
 * Dilengkapi **Real Audio Sine Tone Generator (20 Hz – 8 kHz)** menggunakan `AudioTrack` PCM 16-bit untuk menguji *amplifier* atau akustik ruang langsung dari speaker ponsel.
 
-### 3. 🎨 Visual 4/5-Band Resistor & SMD EIA-96 Decoder
+### 3. 🏭 Tab Baru: PLC, PID Controller & Industrial Sensor Lab
+* **Simulator Sensor RTD PT100 / NTC & Jembatan Wheatstone:** Hitung perubahan resistansi ($\Omega$) berdasarkan suhu (°C) dan tegangan diferensial Op-Amp Instrumentasi.
+* **Industrial 4–20 mA Current Loop Scaler:** Konversi sinyal arus transmiter industri ke nilai proses fisik (PV) dan nilai register ADC PLC Siemens (`0–27648`) atau ESP32 (`0–4095`).
+* **Digital Logic Analyzer & Modbus CRC-16:** Visualisasi timing diagram pulsa UART 8N1 serta kalkulator checksum CRC-16 untuk komunikasi serial RS485 / Modbus RTU.
+* **PID Controller Step Response Simulator & % Error Calculator:** Simulasi kurva respon sistem kendali Orde-2 berdasarkan tuning $K_p, K_i, K_d$ serta kalkulator galat praktikum teoretis vs pengukuran riil.
+
+### 4. 🎨 Visual Resistor & SMD EIA-96 Decoder
 * Kalkulator kode gelang warna resistor 4-band dan 5-band presisi tinggi.
 * **Dekoder Resistor SMD (3-Digit, 4-Digit, R-Decimal Shunt, & Standar Presisi EIA-96)** serta dekoder kapasitor keramik (`104` ➔ `pF / nF / µF`).
 
-### 4. 📐 PCB Trace Width (IPC-2221) & IoT Deep-Sleep Battery Estimator
+### 5. 📐 PCB Trace Width (IPC-2221) & IoT Deep-Sleep Battery Estimator
 * **IPC-2221 PCB Calculator:** Menghitung lebar minimum jalur tembaga PCB (`mm` & `mil`) berdasarkan arus beban (Ampere), ketebalan tembaga ($1\text{ oz} / 2\text{ oz}$), dan batas kenaikan suhu ($\Delta T$).
 * **IoT Battery Life Calculator:** Mengestimasi umur baterai (Hari/Bulan) untuk node ESP32/LoRa berdasarkan profil arus *Active Mode (mA)* dan *Deep-Sleep Mode (µA)*.
 
-### 5. ⚡ Hukum Ohm + Rekomendasi Rating Watt Fisik, NE555 & ADC MCU
-* Menghitung disipasi panas Watt beserta rekomendasi ukuran fisik resistor ($\frac{1}{4}\text{W}, \frac{1}{2}\text{W}, 1\text{W}, 5\text{W}$ *Wirewound*).
-* Kalkulator resolusi digital **ADC Mikrokontroler (10-bit Arduino, 12-bit ESP32, 16-bit ADS1115)**, pembagi tegangan level-shifter `5V ➔ 3.3V`, dan osilator PWM **IC NE555**.
-
-### 6. 🔌 Interactive Hardware Pinout Explorer, I2C Lookup & BOM Exporter (.CSV)
-* Inspeksi kaki pin interaktif untuk **ESP32 DevKit V1 (30-Pin), IC NE555, dan Sensor Energi PZEM-004T v3**, lengkap dengan direktori alamat Hexadesimal sensor **I2C**.
+### 6. 🔌 Interactive Hardware Pinout Explorer & BOM Exporter (.CSV)
+* Inspeksi kaki pin interaktif untuk **10 Board/Sensor/IC Populer**: *ESP32 DevKit V1, Arduino Uno R3, Raspberry Pi Pico, PZEM-004T, DHT22, HC-SR04, L298N, NE555/LM358, dan LoRa SX1278*, lengkap dengan gambar visual di atas dan tabel fungsi setiap kaki secara detail di bawahnya.
 * **Bill of Materials (BOM) Cost Estimator:** Rekap anggaran belanja komponen proyek elektronika dan ekspor langsung ke format **Excel (`.CSV`)**.
 
 ---
 
-## 🛠️ Tech Stack & Arsitektur Modular
+## 🛠️ Stack Teknologi & Arsitektur Modular
 
 * **Bahasa & UI:** 100% Kotlin + Jetpack Compose (Material Design 3 — Adaptive & Responsive Layout).
 * **Custom Vector & Canvas Engine:** 2D `Canvas`, Cubic Bézier Jumper Wires, IEEE Logic Gate Paths, & Dynamic Resistor Color Band Renderer.
@@ -65,8 +69,8 @@
   1. `ElectroModels.kt` — Skema warna PCB, model data, rumus IPC-2221 & dekoder SMD EIA-96.
   2. `PassiveComponentScreen.kt` — Studio gelang warna resistor, SMD, kapasitor, dan seri/paralel.
   3. `CircuitCalculatorScreen.kt` — Kalkulator Hukum Ohm, LED, Baterai IoT, ADC, PCB Trace, & NE555.
-  4. `VirtualSimLabScreen.kt` — Simulator Breadboard Drag-and-Drop, Osiloskop FFT, & Audio Generator.
-  5. `PinoutAndBomScreen.kt` & `MainActivity.kt` — Pinout interaktif, tabel I2C, BOM CSV Exporter, & navigasi utama.
+  4. `VirtualSimLabScreen.kt` — Simulator Breadboard, Multimeter Interaktif, Osiloskop Dual-Channel CH1/CH2, & Audio Generator.
+  5. `PinoutAndBomScreen.kt`, `SensorAndControlScreen.kt`, & `MainActivity.kt` — Pinout lengkap, PLC 4-20mA, K-Map Solver, dan navigasi utama.
 
 ---
 
