@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BambuElectroMainApp() {
-    var selectedTab by remember { mutableIntStateOf(0) }
+    var selectedTab by remember { mutableIntStateOf(0) } // 0..4 = BottomBar, 5 = Pro Engineering Hub
 
     Scaffold(
         topBar = {
@@ -57,16 +58,19 @@ fun BambuElectroMainApp() {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                        .padding(horizontal = 14.dp, vertical = 12.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.weight(1f)
+                    ) {
                         Surface(
                             shape = RoundedCornerShape(14.dp),
                             color = SchematicIvory,
                             border = BorderStroke(2.dp, BrightGold),
-                            modifier = Modifier.size(46.dp)
+                            modifier = Modifier.size(44.dp)
                         ) {
                             Image(
                                 painter = painterResource(id = R.drawable.logo_bambuelectro),
@@ -79,30 +83,48 @@ fun BambuElectroMainApp() {
                         }
                         Spacer(modifier = Modifier.width(10.dp))
                         Column {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text(
-                                    text = "BambuElectro",
-                                    color = PureWhite,
-                                    fontSize = 19.sp,
-                                    fontWeight = FontWeight.ExtraBold
-                                )
-                                Spacer(modifier = Modifier.width(6.dp))
-                                Surface(color = BrightGold, shape = RoundedCornerShape(6.dp)) {
-                                    Text(
-                                        text = "ULTIMATE LAB",
-                                        color = SiliconDark,
-                                        fontSize = 9.sp,
-                                        fontWeight = FontWeight.ExtraBold,
-                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                                    )
-                                }
-                            }
                             Text(
-                                text = "Breadboard Sim • PCB • Pinout • PLC & PID Suite",
+                                text = "BambuElectro",
+                                color = PureWhite,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                maxLines = 1
+                            )
+                            Text(
+                                text = "PCB • Breadboard Sim • RF • PLC • Jobsheet PDF",
                                 color = SoftTraceBorder,
-                                fontSize = 11.sp,
+                                fontSize = 10.sp,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    // Tombol Akses Modul Pro Suite (RF Smith Chart, SMPS/Solar, & PDF Jobsheet)
+                    Surface(
+                        color = if (selectedTab == 5) BrightGold else SiliconDark,
+                        shape = RoundedCornerShape(12.dp),
+                        border = BorderStroke(1.5.dp, BrightGold),
+                        modifier = Modifier.clickable { selectedTab = 5 }
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 7.dp)
+                        ) {
+                            Icon(
+                                Icons.Default.AutoAwesome,
+                                contentDescription = "Pro Suite",
+                                tint = if (selectedTab == 5) SiliconDark else BrightGold,
+                                modifier = Modifier.size(15.dp)
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = "PRO LAB",
+                                color = if (selectedTab == 5) SiliconDark else PureWhite,
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.ExtraBold
                             )
                         }
                     }
@@ -182,6 +204,7 @@ fun BambuElectroMainApp() {
                 2 -> VirtualSimLabScreen()
                 3 -> PinoutAndBomScreen()
                 4 -> SensorAndControlScreen()
+                5 -> ProEngineeringHubScreen()
             }
         }
     }
